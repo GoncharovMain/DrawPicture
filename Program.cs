@@ -7,15 +7,18 @@ namespace DrawPicture
     {
         static void Main(string[] args)
         {
-            DrawGraphic graphic = new DrawGraphic(700, 700);
+            DrawGraphic graphic = new DrawGraphic(1000, 1000);
 
             graphic.Pen = new Pen(Color.FromArgb(255, 0, 192, 255));
 
-            graphic.Draw(x => x * x, new Pen(Color.Yellow));
-            graphic.Draw(x => x > 0 ? Math.Sqrt(x) : 0, new Pen(Color.Green));
-            graphic.Draw(x => x * x * x, new Pen(Color.Green));
-            graphic.Draw(x => -5 + 3 * Math.Sin(1.5 * x), new Pen(Color.Red));
-            graphic.Draw(x => -3 + 6 / (1 + Math.Exp(-x)));
+            graphic.Draw(x => Math.Pow(x, 4) - 2*x*x - 3, new Pen(Color.Yellow));
+            graphic.Draw(x => x > 0 ? 1-1/x: 0, new Pen(Color.Red));
+            graphic.Draw(x => -1 + 1, new Pen(Color.Red));
+
+            graphic.Draw(x => x > 0 ? -1/x: 0, new Pen(Color.Green));
+            graphic.Draw(x => -1, new Pen(Color.Green));
+            graphic.DrawVerticalLine(Math.E, new Pen(Color.Green));
+
 
             graphic.Save("Graphs.png");
         }

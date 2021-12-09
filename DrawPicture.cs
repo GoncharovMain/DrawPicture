@@ -73,6 +73,22 @@ namespace DrawPicture
 
             this.Pen = temp;
         }
+        public void DrawVerticalLine(double x)
+        {
+            int horizontalBias = _centerX + (int)(x * _stepHeight);
+
+            _graphic.DrawLine(this.Pen, new Point(x: horizontalBias, y: 0), new Point(x: horizontalBias, y: _height));
+        }
+        public void DrawVerticalLine(double x, Pen pen)
+        {
+            Pen temp = this.Pen;
+
+            this.Pen = pen;
+
+            DrawVerticalLine(x);
+
+            this.Pen = temp;
+        }
         public void Save(string filename) => _bitmap.Save(filename);
         private void DrawCells()
         {
